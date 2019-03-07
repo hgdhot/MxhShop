@@ -90,7 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxshop',
-        'HOST': '192.168.25.130',
+        'HOST': '192.168.74.128',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'mysql',
@@ -140,3 +140,10 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+# 所有rest的配置都要在此变量中定义
+# 具体有哪些配置项可配置，可以查rest_framework源码中的settings模块
+REST_FRAMEWORK = {
+    # 如果view中指定了分页器类，此处配置可省略
+    # 'PAGE_SIZE': 10,
+    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination'
+}
