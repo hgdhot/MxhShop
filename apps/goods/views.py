@@ -3,6 +3,7 @@ from rest_framework import mixins
 from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import pagination
+from rest_framework import viewsets
 
 from .serializers import GoodsSerializer
 from .models import Goods
@@ -22,7 +23,8 @@ class GoodsPagination(pagination.PageNumberPagination):
 
 # class GoodsListView(APIView):
 # class GoodsListView(mixins.ListModelMixin, generics.GenericAPIView):
-class GoodsListView(generics.ListAPIView):
+# class GoodsListView(generics.ListAPIView):
+class GoodsViewSet(viewsets.ModelViewSet):
     """
     商品列表页
     """
