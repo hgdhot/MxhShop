@@ -24,7 +24,7 @@ class GoodsPagination(pagination.PageNumberPagination):
 # class GoodsListView(APIView):
 # class GoodsListView(mixins.ListModelMixin, generics.GenericAPIView):
 # class GoodsListView(generics.ListAPIView):
-class GoodsViewSet(viewsets.ModelViewSet):
+class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
     商品列表页
     """
