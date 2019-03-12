@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'xadmin',
     'rest_framework',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -90,7 +91,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxshop',
-        'HOST': '192.168.74.128',
+        'HOST': '192.168.25.130',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'mysql',

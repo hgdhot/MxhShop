@@ -11,7 +11,7 @@ from .views import GoodsViewSet
 # 通过Router来注册视图集，就不用向上面那样来显式地
 # 将不同请求方式（GET、POST）所对应的操作（Action）进行绑定
 router = DefaultRouter()
-router.register(r'', GoodsViewSet)
+router.register(r'', GoodsViewSet, base_name="goods")
 
 
 # urlpatterns = [

@@ -5,8 +5,11 @@ from rest_framework.response import Response
 from rest_framework import pagination
 from rest_framework import viewsets
 
+from django_filters.rest_framework import DjangoFilterBackend
+
 from .serializers import GoodsSerializer
 from .models import Goods
+from .filters import GoodFilter
 
 
 # Create your views here.
@@ -49,6 +52,19 @@ class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     serializer_class = GoodsSerializer
     queryset = Goods.objects.all()
     pagination_class = GoodsPagination
+    # 过滤所用的配置
+    filter_backends = (DjangoFilterBackend, )
+    # filter_fields = ('name', 'shop_price')
+    filterset_class = GoodFilter
 
     # def get(self, request, *args, **kwargs):
     #     return self.list(request, *args, **kwargs)
+
+    # 最基础的过滤的方式，定义了此方法就不用定义queryset属性了
+    # def get_queryset(self):
+    #     # 只有在第一次使用此查询集中的数据时才会真正发生数据库查询
+    #     queryset = Goods.objects.all()
+    #     price_min = self.request.query_params.get('price_min', 0)
+    #     if price_min:
+    #         queryset = queryset.filter(shop_price__gt=int(price_min))
+    #     return queryset
