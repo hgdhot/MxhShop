@@ -29,7 +29,7 @@ class GoodsPagination(pagination.PageNumberPagination):
 # class GoodsListView(generics.ListAPIView):
 class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     """
-    商品列表页
+    商品列表页，实现商品的分页、搜索、过滤、排序
     """
     """
     def get(self, request, format=None):
@@ -38,7 +38,7 @@ class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response(goods_serializer.data)
 
     def post(self, request, format=None):
-        # 此处的request对象时drf框架封装的
+        # 此处的request对象是drf框架封装的
         # 会把django的request对象中的GET/POST等请求参数都放到data属性中
         serializer = GoodsSerializer(data=request.data)
         # 序列化器可以用来做校验
