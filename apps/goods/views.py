@@ -4,6 +4,7 @@ from rest_framework import generics
 from rest_framework.response import Response
 from rest_framework import pagination
 from rest_framework import viewsets
+from rest_framework import filters
 
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -50,12 +51,15 @@ class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     """
     serializer_class = GoodsSerializer
-    queryset = Goods.objects.all()
+    # 查询所有商品，按商品售价倒序（从高到低）排列
+    queryset = Goods.objects.all().order_by('-shop_price')
     pagination_class = GoodsPagination
     # 过滤所用的配置
-    filter_backends = (DjangoFilterBackend, )
+    filter_backends = (DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter)
     # filter_fields = ('name', 'shop_price')
     filterset_class = GoodFilter
+    search_fields = ('^name', '^goods_brief', '^goods_desc')
+    ordering_fields = ('shop_price', 'market_price')
 
     # def get(self, request, *args, **kwargs):
     #     return self.list(request, *args, **kwargs)
