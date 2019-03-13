@@ -8,6 +8,7 @@ class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = GoodsCategory
         fields = '__all__'
+        depth = 3
 
 
 # class GoodsSerializer(serializers.Serializer):
@@ -27,9 +28,11 @@ class GoodsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Goods
         # 通过fields属性指明模型类的哪些字段需要序列化
-        # 通过__all__制定字段，默认外键字段的值是外键值
+        # 通过__all__指明所有字段，默认外键字段的值是外键值
         # 可以手动覆盖，使其显示外键对象的完整属性
         fields = '__all__'
+        # 使用depth属性可以方便的实现序列化器的嵌套
+        depth = 1
     # 自定义外键字段的序列化器，使其显示外键关联对象的完整属性
-    category = CategorySerializer()
+    # category = CategorySerializer()
 

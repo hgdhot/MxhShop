@@ -1,7 +1,8 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 # from .views_base import GoodsListView
-from .views import GoodsViewSet
+
+from .views import GoodsViewSet, CategoryViewSet
 
 # goods_list = GoodsListViewSet.as_view({
 #     'get': 'list',
@@ -11,7 +12,9 @@ from .views import GoodsViewSet
 # 通过Router来注册视图集，就不用向上面那样来显式地
 # 将不同请求方式（GET、POST）所对应的操作（Action）进行绑定
 router = DefaultRouter()
-router.register(r'', GoodsViewSet, base_name="goods")
+# 配置goods的url
+router.register(r'goods', GoodsViewSet, base_name="goods")
+router.register(r'categorys', CategoryViewSet, base_name="categorys")
 
 
 # urlpatterns = [

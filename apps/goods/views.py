@@ -8,8 +8,8 @@ from rest_framework import filters
 
 from django_filters.rest_framework import DjangoFilterBackend
 
-from .serializers import GoodsSerializer
-from .models import Goods
+from .serializers import GoodsSerializer, CategorySerializer
+from .models import Goods, GoodsCategory
 from .filters import GoodFilter
 
 
@@ -72,3 +72,14 @@ class GoodsViewSet(mixins.ListModelMixin, viewsets.GenericViewSet):
     #     if price_min:
     #         queryset = queryset.filter(shop_price__gt=int(price_min))
     #     return queryset
+
+
+class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets.GenericViewSet):
+    """
+    list:
+        商品分类列表数据
+    retrieve:
+        获取某一商品分类的信息，访问方式是标准的REST方式，如/goods/categorys/categoryid
+    """
+    serializer_class = CategorySerializer
+    queryset = GoodsCategory.objects.all()
