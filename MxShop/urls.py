@@ -26,6 +26,6 @@ urlpatterns = [
     # 此路由配置用于静态文件serve
     # re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
 
-    path('goods/', include('goods.urls')),
+    path('', include('goods.urls')),
     re_path(r'^api-auth/', include('rest_framework.urls'))
 ] + static(settings.MEDIA_URL, docment_root=settings.MEDIA_ROOT)

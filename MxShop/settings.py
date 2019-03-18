@@ -50,9 +50,11 @@ INSTALLED_APPS = [
     'xadmin',
     'rest_framework',
     'django_filters',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -61,6 +63,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_ALLOW_ALL = True
 
 ROOT_URLCONF = 'MxShop.urls'
 
@@ -91,7 +95,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mxshop',
-        'HOST': '192.168.25.130',
+        'HOST': '192.168.74.130',
         'PORT': 3306,
         'USER': 'root',
         'PASSWORD': 'mysql',
