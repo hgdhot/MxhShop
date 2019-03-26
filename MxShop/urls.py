@@ -24,8 +24,8 @@ urlpatterns = [
     path('xadmin/', xadmin.site.urls),
     path('ueditor/', include('DjangoUeditor.urls')),
     # 此路由配置用于静态文件serve
-    # re_path(r'^media/(?P<path>.*)$', serve, {"document_root": MEDIA_ROOT}),
+    # re_path(r'^media/(?P<path>.*)$', serve, {"document_root": settings.MEDIA_ROOT}),
 
     path('', include('goods.urls')),
     re_path(r'^api-auth/', include('rest_framework.urls'))
-] + static(settings.MEDIA_URL, docment_root=settings.MEDIA_ROOT)
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -82,4 +82,4 @@ class CategoryViewSet(mixins.ListModelMixin, mixins.RetrieveModelMixin, viewsets
         获取某一商品分类的信息，访问方式是标准的REST方式，如/goods/categorys/categoryid
     """
     serializer_class = CategorySerializer
-    queryset = GoodsCategory.objects.all()
+    queryset = GoodsCategory.objects.filter(category_type=1)
